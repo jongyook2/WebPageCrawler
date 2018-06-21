@@ -49,7 +49,7 @@ public class CommandLineMain {
 			savePath=cmd.getOptionValue("d");
 			File d;
 			d=new File(savePath);
-			if(!d.getParentFile().isDirectory()) {
+			if(!d.isDirectory()) {
 				System.out.println("Wrong Onput Path, Please check and retry\n");
 				throw new WrongPathException("Onput Path Is Wrong\n");
 			}
