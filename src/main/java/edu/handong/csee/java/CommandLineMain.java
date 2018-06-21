@@ -56,9 +56,14 @@ public class CommandLineMain {
 			help=cmd.hasOption("h");
 			UrlReader urlReader = new UrlReader();
 			HtmlSaver htmlSaver = new HtmlSaver();
-			htmlSaver.convertToHtml(urlReader.reader(url), savePath);
-
-
+			String urlModified="";
+			if(url.contains("https")) {
+				urlModified=url.replace("https://", "");
+			}
+			else if(url.contains("http:")) {
+				urlModified=url.replace("http://", "");
+			}
+			htmlSaver.convertToHtml(urlReader.reader(url), savePath, urlModified);
 		}catch (Exception e) {
 			System.out.println("ErroMessage: "+e.getMessage());
 			printHelp(options);
